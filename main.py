@@ -20,6 +20,7 @@ async def get_current_user(credentials: HTTPAuthorizationCredentials = Security(
 @app.post("/documents/{collection_name}", dependencies=[Depends(get_current_user)])
 async def create_document(collection_name: str, document: Dict):
     document_id = await db.create_document(collection_name, document)
+    print("test")
     return {"id": document_id}
 
 @app.get("/documents/{collection_name}/{document_id}", dependencies=[Depends(get_current_user)])
