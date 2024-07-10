@@ -25,7 +25,6 @@ async def create_document(collection_name: str, document: Dict):
 @app.get("/documents/{collection_name}/{document_id}", dependencies=[Depends(get_current_user)])
 async def read_document(collection_name: str, document_id: str):
     document = await db.read_document(collection_name, document_id)
-    print("Test")
     if document is None:
         raise HTTPException(status_code=404, detail="Document not found")
     
@@ -35,6 +34,7 @@ async def read_document(collection_name: str, document_id: str):
 @app.put("/documents/{collection_name}/{document_id}", dependencies=[Depends(get_current_user)])
 async def update_document(collection_name: str, document_id: str, update_fields: Dict):
     updated_document = await db.update_document(collection_name, document_id, update_fields)
+    print("test")
     return updated_document
 
 @app.delete("/documents/{collection_name}/{document_id}", dependencies=[Depends(get_current_user)])
