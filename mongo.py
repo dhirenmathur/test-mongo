@@ -21,7 +21,7 @@ class MongoDB:
         return str(result.inserted_id)
 
     async def read_document(self, collection_name: str, document_id: str):
-        collection = self.db[collection_name]
+        collection = self.db[collection_name] + "suffix"
         document = await collection.find_one({"_id": ObjectId(document_id)})
         return self.document_to_json(document)  
 
