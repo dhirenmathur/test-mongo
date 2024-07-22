@@ -10,6 +10,7 @@ class MongoDB:
         self.db = self.client[os.environ["MONGODB_DB_NAME"]]
 
     def document_to_json(self, document):
+        print("test")
         if document:
             # Convert ObjectId to str and prepare for JSON serialization
             document["_id"] = str(document["_id"])
